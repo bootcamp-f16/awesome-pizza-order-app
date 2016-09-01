@@ -1,4 +1,5 @@
 import os
+import copy
 from datetime import datetime
 
 import yaml
@@ -98,7 +99,7 @@ class Cart():
             elif (menu_selection.isdigit()
                 and int(menu_selection) -1 < len(self.available_pizzas)):
 
-                pizza = self.available_pizzas[int(menu_selection) - 1]
+                pizza = copy.deepcopy(self.available_pizzas[int(menu_selection) - 1])
                 pizza = Pizza.make_pizza(pizza)
                 if pizza is not None:
                     self.pizzas.append(pizza)
